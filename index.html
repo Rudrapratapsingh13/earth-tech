@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earth Tech — Sustainable Building Lifespan & Lifecycle Intelligence</title>
+  <meta name="description" content="Predict building lifespan, generate proactive maintenance schedules, and explore sustainable construction methods with Earth Tech.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" aria-label="Earth Tech Homepage">
+        <div class="logo-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Earth<span class="text-accent">Tech</span></span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#estimator" class="nav-link">Lifespan Estimator</a>
+        <a href="#maintenance" class="nav-link">Maintenance Planner</a>
+        <a href="#sustainable-methods" class="nav-link">Eco Materials</a>
+        <a href="#comparator" class="nav-link">Method Comparison</a>
+        <a href="#about" class="nav-link">About & Impact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Dark / White Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Dark and White mode" title="Switch Theme (Dark / Light)">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Google Login / Profile Widget -->
+        <div class="auth-wrapper" id="authWrapper">
+          <button class="btn btn-google-login" id="googleLoginBtn" aria-label="Sign in with Google">
+            <svg class="google-icon" width="16" height="16" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span class="btn-text">Google Sign-In</span>
+          </button>
+
+          <div class="user-profile-menu" id="userProfileMenu" style="display: none;">
+            <button class="user-profile-btn" id="userProfileToggle" aria-label="User account menu" aria-expanded="false">
+              <span class="user-avatar-badge" id="userAvatarBadge">AG</span>
+              <span class="user-name" id="userNameDisplay">Alex Green</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+              <div class="user-dropdown-info">
+                <strong id="dropdownUserName">Alex Green</strong>
+                <span id="dropdownUserEmail">alex.green@earthtech.eco</span>
+                <span class="account-badge">Google Verified</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#estimator" class="dropdown-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                My Saved Building Specs
+              </a>
+              <a href="#maintenance" class="dropdown-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Active Maintenance Plans
+              </a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item dropdown-logout-btn" id="logoutBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <a href="#estimator" class="btn btn-primary btn-sm nav-cta">Start Estimator</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Intelligent Building Lifecycle & Carbon Intelligence</span>
+          </div>
+          <h1 class="hero-title">
+            Build for generations, <br>
+            <span class="gradient-text">engineered for our planet.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Earth Tech combines structural engineering benchmarks and eco-materials data to help homeowners, architects, and developers estimate building longevity, streamline preventive maintenance, and minimize lifecycle carbon emissions.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#estimator" class="btn btn-primary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Estimate Lifespan
+            </a>
+            <a href="#maintenance" class="btn btn-secondary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Plan Maintenance
+            </a>
+          </div>
+
+          <!-- Quick Presets for Beginners -->
+          <div class="preset-selector-wrapper">
+            <span class="preset-label">Beginner? Try a sample building preset:</span>
+            <div class="preset-buttons">
+              <button class="preset-chip" data-preset="suburban-home">🏡 Suburban Eco-Home</button>
+              <button class="preset-chip" data-preset="mass-timber-office">🏢 Mass Timber Office</button>
+              <button class="preset-chip" data-preset="rammed-earth-cabin">🌿 Rammed Earth Cabin</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats-panel">
+          <div class="glass-card stat-item">
+            <div class="stat-number" id="heroStatCarbon">-45%</div>
+            <div class="stat-label">Embodied Carbon Reduction via Sustainable Mass Timber & Bio-Materials</div>
+          </div>
+          <div class="glass-card stat-item">
+            <div class="stat-number" id="heroStatLifespan">85+ yrs</div>
+            <div class="stat-label">Average Projected Longevity with Proactive Maintenance Strategies</div>
+          </div>
+          <div class="glass-card stat-item">
+            <div class="stat-number">ISO 15686</div>
+            <div class="stat-label">Calculations aligned with International Building Lifecycle Service Life Standards</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: LIFESPAN ESTIMATOR -->
+    <section class="section-container" id="estimator">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Interactive Calculator</span>
+          <h2 class="section-title">Building Lifespan Estimator</h2>
+          <p class="section-description">
+            Evaluate structural durability, climate risks, and material choices to forecast service life and discover how eco-friendly retrofits unlock decades of resilience.
+          </p>
+        </div>
+
+        <div class="calculator-grid">
+          <!-- Input Form Column -->
+          <div class="card form-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <div>
+                <h3 class="card-title">Building Specification</h3>
+                <p class="card-subtitle">Tune parameters based on your project</p>
+              </div>
+            </div>
+
+            <form id="lifespanForm" class="calculator-form">
+              <div class="form-group">
+                <label for="buildingType">Building Type</label>
+                <select id="buildingType" class="form-control">
+                  <option value="residential-single">Residential (Single-Family)</option>
+                  <option value="residential-multi">Multi-Family Apartment / Condominium</option>
+                  <option value="commercial-office">Commercial Office Building</option>
+                  <option value="institutional">Institutional / Educational Facility</option>
+                  <option value="industrial">Light Industrial / Logistics</option>
+                </select>
+                <small class="field-hint">Defines occupancy loads, service demands, and baseline design life.</small>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="structuralMaterial">Primary Structure</label>
+                  <select id="structuralMaterial" class="form-control">
+                    <option value="mass-timber">Mass Timber / Cross-Laminated Timber (CLT)</option>
+                    <option value="low-carbon-concrete">Low-Carbon / Geopolymer Concrete</option>
+                    <option value="traditional-concrete">Traditional Reinforced Concrete</option>
+                    <option value="recycled-steel">Recycled Structural Steel Frame</option>
+                    <option value="rammed-earth">Rammed Earth & Compressed Earth Blocks</option>
+                    <option value="light-timber">Light Wood Frame (Stick Built)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="envelopeType">Exterior Envelope / Facade</label>
+                  <select id="envelopeType" class="form-control">
+                    <option value="brick-masonry">High-Density Brick / Stone Masonry</option>
+                    <option value="charred-timber">Charred Timber (Shou Sugi Ban) Siding</option>
+                    <option value="fiber-cement">Fiber Cement Rain-Screen</option>
+                    <option value="eifs-stucco">Exterior Insulation / Stucco (EIFS)</option>
+                    <option value="curtain-wall">High-Efficiency Curtain Wall Glazing</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="climateZone">Climate Zone & Exposure</label>
+                  <select id="climateZone" class="form-control">
+                    <option value="temperate">Temperate / Moderate (Low Stress)</option>
+                    <option value="coastal">Coastal / Marine (Salt Fog & High Humidity)</option>
+                    <option value="freeze-thaw">Severe Freeze-Thaw / Cold Region</option>
+                    <option value="humid-tropical">Humid Subtropical (High UV & Moisture)</option>
+                    <option value="arid">Arid / High UV Desert (Extreme Thermal Swing)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="foundationType">Foundation System</label>
+                  <select id="foundationType" class="form-control">
+                    <option value="low-carbon-slab">Low-Carbon Insulated Raft Slab</option>
+                    <option value="standard-concrete-slab">Standard Reinforced Slab on Grade</option>
+                    <option value="deep-piles">Deep Concrete / Helical Steel Piles</option>
+                    <option value="stone-lime">Rammed Earth / Lime-Stabilized Trench</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="maintenanceStrategy">Maintenance Protocol</label>
+                <select id="maintenanceStrategy" class="form-control">
+                  <option value="proactive-smart">Proactive & Predictive (Smart Sensors + Scheduled Servicing)</option>
+                  <option value="standard-routine" selected>Standard Routine (Periodic Bi-annual Inspections)</option>
+                  <option value="reactive-minimal">Reactive / Minimal (Fix Only When Failing)</option>
+                </select>
+                <small class="field-hint">Regular maintenance is the single largest variable in real-world longevity.</small>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="buildingAge">Current Building Age (Years): <span id="ageDisplay" class="font-bold text-accent">0</span></label>
+                  <input type="range" id="buildingAge" min="0" max="60" value="0" step="1" class="range-slider">
+                </div>
+
+                <div class="form-group">
+                  <label for="targetGoal">Desired Lifespan Goal (Years): <span id="goalDisplay" class="font-bold text-accent">75</span></label>
+                  <input type="range" id="targetGoal" min="30" max="150" value="75" step="5" class="range-slider">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="recalcBtn" class="btn btn-primary btn-block">
+                  Calculate Lifespan & Resilience
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Dynamic Output Column -->
+          <div class="card results-card" id="resultsCard">
+            <div class="results-header">
+              <span class="results-pill">Dynamic Lifecycle Assessment</span>
+              <h3 class="results-title">Projected Building Longevity</h3>
+            </div>
+
+            <!-- Lifespan Gauge & Key Metrics -->
+            <div class="lifespan-summary-box">
+              <div class="gauge-wrapper">
+                <div class="gauge-ring">
+                  <svg viewBox="0 0 120 120" class="gauge-svg">
+                    <circle class="gauge-bg" cx="60" cy="60" r="50" />
+                    <circle class="gauge-fill" id="gaugeProgress" cx="60" cy="60" r="50" stroke-dasharray="314.15" stroke-dashoffset="100" />
+                  </svg>
+                  <div class="gauge-inner">
+                    <span class="gauge-value" id="estimatedYears">85</span>
+                    <span class="gauge-unit">Years</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="summary-metrics">
+                <div class="metric-row">
+                  <span class="metric-label">Durability Grade</span>
+                  <span class="metric-badge grade-a" id="durabilityGrade">A</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">Remaining Useful Life</span>
+                  <span class="metric-val" id="remainingYears">85 years</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">Embodied Carbon Offset</span>
+                  <span class="metric-val text-success" id="carbonOffsetStat">-38% vs. Standard</span>
+                </div>
+                <div class="metric-row">
+                  <span class="metric-label">Goal Alignment</span>
+                  <span class="metric-val" id="goalAlignmentText">Exceeds Goal (+10 yrs)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lifecycle Degradation Roadmap -->
+            <div class="milestones-section">
+              <h4 class="sub-heading">Key Lifecycle Milestones</h4>
+              <div class="milestone-timeline" id="milestoneTimeline">
+                <!-- Dynamically generated via JS -->
+              </div>
+            </div>
+
+            <!-- Climate Risks & Vulnerabilities -->
+            <div class="risk-advisory" id="riskAdvisoryBox">
+              <div class="advisory-icon">⚠️</div>
+              <div class="advisory-content">
+                <strong id="advisoryTitle">Climate Consideration: Coastal Salt Mist</strong>
+                <p id="advisoryText">Chloride ingress risks can accelerate structural degradation. Utilize sacrificial anodes, penetrating silane sealers, and 316 stainless fasteners.</p>
+              </div>
+            </div>
+
+            <!-- Sustainable Boost Advice -->
+            <div class="eco-enhancements-box">
+              <div class="enhancement-header">
+                <span class="leaf-icon">🌱</span>
+                <strong>Eco-Longevity Opportunities</strong>
+              </div>
+              <ul class="enhancement-list" id="enhancementList">
+                <!-- Populated dynamically -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MAINTENANCE SCHEDULE PLANNER -->
+    <section class="section-container bg-subtle" id="maintenance">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Proactive Asset Management</span>
+          <h2 class="section-title">Smart Building Maintenance Planner</h2>
+          <p class="section-description">
+            Prevent premature structural failure and peak repair costs. Configure your building's active systems to generate a customized preventative maintenance roadmap.
+          </p>
+        </div>
+
+        <div class="planner-wrapper">
+          <!-- Planner Controls & System Toggles -->
+          <div class="planner-controls card">
+            <h3 class="controls-title">1. Select Installed Building Systems</h3>
+            <p class="controls-desc">Toggle the components present on your property to calibrate inspection schedules:</p>
+            
+            <div class="system-toggles-grid">
+              <label class="system-toggle">
+                <input type="checkbox" id="sysRoof" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">🏠</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">Roofing & Waterproofing</span>
+                    <span class="toggle-desc">Membranes, flashings, drainage</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="system-toggle">
+                <input type="checkbox" id="sysEnvelope" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">🧱</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">Building Envelope & Facade</span>
+                    <span class="toggle-desc">Sealants, cladding, glazing seals</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="system-toggle">
+                <input type="checkbox" id="sysHvac" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">💨</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">HVAC & Heat Pumps</span>
+                    <span class="toggle-desc">Filters, heat recovery, chillers</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="system-toggle">
+                <input type="checkbox" id="sysSolar" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">☀️</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">Solar PV & Energy Storage</span>
+                    <span class="toggle-desc">Inverters, panels, battery banks</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="system-toggle">
+                <input type="checkbox" id="sysPlumbing" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">💧</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">Plumbing & Rainwater Harvest</span>
+                    <span class="toggle-desc">Piping, backflows, cistern filtration</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="system-toggle">
+                <input type="checkbox" id="sysStructure" checked>
+                <div class="toggle-card">
+                  <span class="toggle-icon">🏗️</span>
+                  <div class="toggle-info">
+                    <span class="toggle-name">Structural Frame & Foundation</span>
+                    <span class="toggle-desc">Settlement, moisture ingress, deflection</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Quick Filter Bar -->
+            <div class="planner-filter-bar">
+              <span class="filter-label">Filter Roadmap:</span>
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="quarterly">Quarterly</button>
+                <button class="filter-btn" data-filter="annual">Annual</button>
+                <button class="filter-btn" data-filter="5year">5-Year Capital</button>
+                <button class="filter-btn" data-filter="critical">High Priority Only</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated Roadmap Card -->
+          <div class="planner-output card">
+            <div class="planner-output-header">
+              <div>
+                <h3 class="output-title">Preventative Maintenance Schedule</h3>
+                <p class="output-sub" id="activeTaskCount">Showing 12 maintenance milestones</p>
+              </div>
+              <div class="planner-actions">
+                <button class="btn btn-secondary btn-sm" id="printPlanBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  Print / Save PDF
+                </button>
+                <button class="btn btn-primary btn-sm" id="exportJsonBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Export Data
+                </button>
+              </div>
+            </div>
+
+            <!-- Task Checklist and Timeline -->
+            <div class="schedule-timeline" id="scheduleTimeline">
+              <!-- Dynamically populated via app.js -->
+            </div>
+
+            <!-- Cost & Health Impact Callout -->
+            <div class="maintenance-summary-bar">
+              <div class="summary-metric-chip">
+                <span class="chip-title">Estimated Annual Upkeep</span>
+                <span class="chip-value text-accent" id="annualCostEstimate">~1.2% of Asset Value</span>
+              </div>
+              <div class="summary-metric-chip">
+                <span class="chip-title">Avoided Premature Replacement</span>
+                <span class="chip-value text-success" id="costSavingsEstimate">Up to $32,000 / 10 yrs</span>
+              </div>
+              <div class="summary-metric-chip">
+                <span class="chip-title">Task Completion Tracker</span>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="tasksProgressBar" style="width: 0%;"></div>
+                </div>
+                <span class="progress-label" id="tasksProgressLabel">0 of 0 Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SUSTAINABLE CONSTRUCTION METHODS EXPLORER -->
+    <section class="section-container" id="sustainable-methods">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Eco-Innovation Library</span>
+          <h2 class="section-title">Sustainable Construction Explorer</h2>
+          <p class="section-description">
+            Discover cutting-edge low-carbon materials, circular construction techniques, and bio-based alternatives that slash embodied carbon without sacrificing durability.
+          </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="materials-search-bar card">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="materialSearchInput" placeholder="Search methods (e.g. Mass Timber, Hempcrete, Geopolymer, R-value, Low Carbon)..." aria-label="Search sustainable materials">
+          </div>
+          <div class="category-chips" id="categoryChips">
+            <button class="category-chip active" data-cat="all">All Innovations</button>
+            <button class="category-chip" data-cat="structural">Structural Frame</button>
+            <button class="category-chip" data-cat="insulation">Insulation & Envelope</button>
+            <button class="category-chip" data-cat="roofing">Roofing & Microclimate</button>
+            <button class="category-chip" data-cat="circular">Circular & Recycled</button>
+          </div>
+        </div>
+
+        <!-- Materials Grid -->
+        <div class="materials-grid" id="materialsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE COMPARISON TOOL -->
+    <section class="section-container bg-subtle" id="comparator">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Side-by-Side Analysis</span>
+          <h2 class="section-title">Traditional vs. Sustainable Comparison</h2>
+          <p class="section-description">
+            Compare carbon footprints, fire ratings, operational efficiency, and real-world durability between standard practices and Earth Tech eco-alternatives.
+          </p>
+        </div>
+
+        <div class="comparison-card card">
+          <div class="comparison-selectors">
+            <div class="compare-selector-col">
+              <label for="compareTraditional">Standard Conventional Method</label>
+              <select id="compareTraditional" class="form-control">
+                <option value="trad-concrete">Portland Cement Reinforced Concrete</option>
+                <option value="trad-steel">Virgin Structural Steel Framing</option>
+                <option value="trad-fiberglass">Petroleum-based Fiberglass Batts</option>
+                <option value="trad-asphalt">Standard Asphalt Shingle Roofing</option>
+                <option value="trad-pvc">Synthetic PVC Siding & Trim Cladding</option>
+              </select>
+            </div>
+
+            <div class="vs-badge">VS</div>
+
+            <div class="compare-selector-col">
+              <label for="compareSustainable">Earth Tech Sustainable Alternative</label>
+              <select id="compareSustainable" class="form-control">
+                <option value="sust-timber">Mass Timber / Cross-Laminated Timber (CLT)</option>
+                <option value="sust-geopolymer">Fly-Ash / Slag Geopolymer Concrete</option>
+                <option value="sust-hempcrete">Hempcrete & Wood-Fiber Bio-Insulation</option>
+                <option value="sust-greenroof">Extensive Living Bio-Solar Green Roof</option>
+                <option value="sust-rammedearth">Rammed Earth & Compressed Earth Blocks</option>
+                <option value="sust-cork">Expanded Natural Pure Cork Cladding</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Comparison Table / Metrics -->
+          <div class="comparison-display" id="comparisonDisplay">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: ABOUT & CARBON METHODOLOGY -->
+    <section class="section-container" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="section-tag">About Earth Tech</span>
+            <h2 class="section-title">Bridging the gap between ecological design and asset longevity.</h2>
+            <p>
+              The built environment accounts for nearly <strong>40% of annual global greenhouse gas emissions</strong>. A major portion is embodied carbon — emissions generated during material extraction, manufacturing, and construction.
+            </p>
+            <p>
+              Premature building demolition due to deferred maintenance or poor material selection is an ecological catastrophe. <strong>Earth Tech</strong> provides intuitive tools for property owners, designers, and forward-thinking builders to design durable structures that sequester carbon, endure shifting climates, and stay operational for over a century.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar">
+                <div class="pillar-icon">📊</div>
+                <div>
+                  <strong>Data-Driven Durability</strong>
+                  <p>Lifecycle models calibrated using ISO 15686 service life planning and weathering index data.</p>
+                </div>
+              </div>
+
+              <div class="pillar">
+                <div class="pillar-icon">🌲</div>
+                <div>
+                  <strong>Embodied Carbon First</strong>
+                  <p>Prioritizing biogenic materials like mass timber and hempcrete that store atmospheric CO₂.</p>
+                </div>
+              </div>
+
+              <div class="pillar">
+                <div class="pillar-icon">🛡️</div>
+                <div>
+                  <strong>Preventive Asset Preservation</strong>
+                  <p>Actionable maintenance playbooks that avert catastrophic failures and expensive structural repairs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-card card">
+            <h3 class="about-card-title">Startup Mission & Roadmap</h3>
+            <div class="timeline-simple">
+              <div class="timeline-simple-item">
+                <span class="year-badge">Phase 1</span>
+                <div>
+                  <strong>Open Lifecycle Intelligence Platform</strong>
+                  <p>Free, accessible estimators for homeowners and builders worldwide.</p>
+                </div>
+              </div>
+              <div class="timeline-simple-item">
+                <span class="year-badge">Phase 2</span>
+                <div>
+                  <strong>IoT Predictive Sensor Integration</strong>
+                  <p>Embedded moisture and timber deflection telemetry for live structure health.</p>
+                </div>
+              </div>
+              <div class="timeline-simple-item">
+                <span class="year-badge">Phase 3</span>
+                <div>
+                  <strong>Circular Material Passports</strong>
+                  <p>BIM-integrated passports for 100% deconstructability and material salvage.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="newsletter-box">
+              <h4>Stay Connected with Earth Tech</h4>
+              <p>Receive monthly sustainable building blueprints and case studies.</p>
+              <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email" required class="form-control">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+              <div id="newsletterSuccess" class="success-message" style="display: none;">
+                ✓ Welcome aboard! You're now subscribed to Earth Tech insights.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detail Modal for Sustainable Materials -->
+  <div class="modal-backdrop" id="materialModal" aria-hidden="true" role="dialog">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      <div id="modalContent">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Sign-In Modal -->
+  <div class="modal-backdrop" id="googleAuthModal" aria-hidden="true" role="dialog">
+    <div class="modal-card auth-modal-card">
+      <button class="modal-close-btn" id="authModalCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="auth-modal-header text-center">
+        <svg class="google-logo-lg" width="46" height="46" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <h3 class="auth-title">Sign in with Google</h3>
+        <p class="auth-sub">Choose an account to continue to <strong>Earth Tech Lifecycle Manager</strong></p>
+      </div>
+
+      <div class="auth-accounts-list">
+        <!-- Account 1 -->
+        <button class="auth-account-item" data-name="Alex Green" data-email="alex.green@earthtech.eco" data-badge="AG">
+          <div class="account-avatar-circle" style="background: #2d6a4f;">AG</div>
+          <div class="account-details">
+            <strong class="account-name">Alex Green</strong>
+            <span class="account-email">alex.green@earthtech.eco</span>
+          </div>
+          <span class="account-chevron">→</span>
+        </button>
+
+        <!-- Account 2 -->
+        <button class="auth-account-item" data-name="Dr. Elena Vance" data-email="elena.vance@sustain-build.org" data-badge="EV">
+          <div class="account-avatar-circle" style="background: #0284c7;">EV</div>
+          <div class="account-details">
+            <strong class="account-name">Dr. Elena Vance (Lead Architect)</strong>
+            <span class="account-email">elena.vance@sustain-build.org</span>
+          </div>
+          <span class="account-chevron">→</span>
+        </button>
+
+        <!-- Custom Account Entry -->
+        <div class="custom-account-box">
+          <span class="custom-account-label">Or sign in with custom credentials:</span>
+          <div class="custom-account-inputs">
+            <input type="text" id="customAuthName" class="form-control" placeholder="Your Name (e.g. Jordan Miller)">
+            <input type="email" id="customAuthEmail" class="form-control" placeholder="name@company.com">
+            <button type="button" class="btn btn-primary btn-block" id="customAuthSubmitBtn">Continue with this Account</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-modal-footer">
+        <small>To continue, Google will share your name and email with Earth Tech. See Earth Tech's <a href="#about">Privacy Policy</a>.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Building Maintenance Assistant Floating Launcher -->
+  <button class="ai-assistant-fab" id="aiAssistantLauncher" aria-label="Open AI Building Maintenance Assistant" title="Ask AI Building Maintenance Assistant">
+    <div class="ai-fab-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+        <rect x="4" y="8" width="16" height="12" rx="3"/>
+        <circle cx="9" cy="13" r="1.5" fill="currentColor"/>
+        <circle cx="15" cy="13" r="1.5" fill="currentColor"/>
+        <line x1="9" y1="17" x2="15" y2="17"/>
+      </svg>
+      <span class="ai-fab-pulse"></span>
+    </div>
+    <span class="ai-fab-label">AI Maintenance Assistant</span>
+  </button>
+
+  <!-- AI Building Maintenance Assistant Chat Window -->
+  <div class="ai-chat-drawer" id="aiChatWindow" aria-hidden="true" role="dialog">
+    <div class="ai-chat-header">
+      <div class="ai-header-left">
+        <div class="ai-header-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+            <rect x="4" y="8" width="16" height="12" rx="3"/>
+            <circle cx="9" cy="13" r="1.5" fill="currentColor"/>
+            <circle cx="15" cy="13" r="1.5" fill="currentColor"/>
+            <line x1="9" y1="17" x2="15" y2="17"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ai-header-title-row">
+            <strong class="ai-header-title">Earth Tech AI Specialist</strong>
+            <span class="ai-status-pill">
+              <span class="status-dot"></span>
+              Online
+            </span>
+          </div>
+          <p class="ai-header-subtitle">Structural Durability & Maintenance Expert</p>
+        </div>
+      </div>
+      <div class="ai-header-actions">
+        <button class="ai-icon-btn" id="aiClearChatBtn" title="Clear Chat History" aria-label="Clear Chat History">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+        <button class="ai-icon-btn" id="aiCloseChatBtn" title="Close AI Assistant" aria-label="Close AI Assistant">&times;</button>
+      </div>
+    </div>
+
+    <!-- Suggested Topics Quick Chips -->
+    <div class="ai-suggestions-bar" id="aiSuggestionsBar">
+      <span class="suggestions-label">💡 Suggested Questions:</span>
+      <div class="suggestions-scroll">
+        <button type="button" class="ai-suggest-chip" data-query="How do I diagnose and fix flat roof ponding leaks?">💧 Roof Ponding & Leaks</button>
+        <button type="button" class="ai-suggest-chip" data-query="What is the critical maintenance schedule for Mass Timber CLT?">🪵 Mass Timber Care</button>
+        <button type="button" class="ai-suggest-chip" data-query="How to protect concrete foundations from winter freeze-thaw spalling?">❄️ Concrete Freeze-Thaw</button>
+        <button type="button" class="ai-suggest-chip" data-query="How often should heat pumps and HRV/ERV filters be serviced?">💨 Heat Pump & HVAC</button>
+        <button type="button" class="ai-suggest-chip" data-query="How to diagnose foundation wall cracks and tell if settlement is serious?">🧱 Foundation Cracks</button>
+        <button type="button" class="ai-suggest-chip" data-query="What is Shou Sugi Ban charred timber and how to maintain it?">🔥 Shou Sugi Ban Siding</button>
+        <button type="button" class="ai-suggest-chip" data-query="What is the maintenance routine for a living vegetative green roof?">🌿 Green Roof Care</button>
+        <button type="button" class="ai-suggest-chip" data-query="How to test and service solar PV inverters and battery systems?">☀️ Solar Inverter Upkeep</button>
+      </div>
+    </div>
+
+    <!-- Chat Messages Scroll Container -->
+    <div class="ai-chat-body" id="aiChatBody">
+      <div class="ai-message bot">
+        <div class="msg-avatar bot-avatar">🌱</div>
+        <div class="msg-bubble">
+          <p>Hello! I am your <strong>Earth Tech AI Maintenance Specialist</strong>.</p>
+          <p>Ask me anything regarding building lifespan, structural repairs, moisture mitigation, HVAC & heat pumps, solar upkeep, facade crack diagnosis, or low-carbon retrofits. You can also click any of the quick topic chips above!</p>
+          <span class="msg-time">Online</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form class="ai-chat-input-area" id="aiChatForm">
+      <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Ask about leaks, cracks, timber moisture, HVAC, costs..." aria-label="Ask AI building maintenance assistant" autocomplete="off">
+      <button type="submit" class="ai-send-btn" id="aiSendBtn" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <a href="#hero" class="brand-logo footer-logo">
+          <div class="logo-mark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="logo-text">Earth<span class="text-accent">Tech</span></span>
+        </a>
+        <p class="footer-bio">
+          Next-generation infrastructure technology empowering carbon-negative architecture, lifecycle engineering, and sustainable asset stewardship.
+        </p>
+        <p class="copyright">© 2026 Earth Tech Technologies Inc. All rights reserved.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Tools & Calculators</h4>
+        <ul class="footer-links">
+          <li><a href="#estimator">Lifespan Estimator</a></li>
+          <li><a href="#maintenance">Maintenance Roadmap Planner</a></li>
+          <li><a href="#sustainable-methods">Sustainable Material Index</a></li>
+          <li><a href="#comparator">Material Comparison Matrix</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Sustainability Standards</h4>
+        <ul class="footer-links">
+          <li><a href="#about">ISO 15686 Service Life Planning</a></li>
+          <li><a href="#about">Embodied Carbon (EN 15978)</a></li>
+          <li><a href="#about">Mass Timber Fire Resistance (IBC 2024)</a></li>
+          <li><a href="#about">Passive House Envelope Performance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Contact & Feedback</h4>
+        <p class="footer-contact-text">Interested in enterprise building portfolio lifecycle modeling or API access?</p>
+        <a href="mailto:hello@earthtech.eco" class="footer-email-link">contact@earthtech.eco</a>
+        <div class="social-pills">
+          <span class="badge-mini">Carbon Negative</span>
+          <span class="badge-mini">Open Intelligence</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
